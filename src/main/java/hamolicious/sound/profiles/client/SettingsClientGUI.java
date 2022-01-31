@@ -41,7 +41,7 @@ public class SettingsClientGUI extends LightweightGuiDescription {
 			});
 
 
-			label = new WLabel(Integer.toString(i));
+			label = new WLabel(soundProfile.getName());
 			//TODO: add automatic scaling for all GUI elements
 			plainPanel.add(button, 256/2, i*45, 256/2, 40);
 			plainPanel.add(label, 0, i*45, 256/2, 40);

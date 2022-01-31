@@ -10,8 +10,13 @@ import net.minecraft.sound.SoundCategory;
 
 public class SoundProfile {
 	private HashMap<SoundCategory, Float> soundLevels;
+	private String name;
+	public static int currentProfileIndex = 0;
 
 	public SoundProfile() {
+		currentProfileIndex++;
+		name = "Profile " + Integer.toString(currentProfileIndex);
+
 		soundLevels = new HashMap<SoundCategory, Float>();
 		soundLevels.put(SoundCategory.MASTER, 1.0f);
 		soundLevels.put(SoundCategory.MUSIC, 1.0f);
@@ -23,6 +28,26 @@ public class SoundProfile {
 		soundLevels.put(SoundCategory.PLAYERS, 1.0f);
 		soundLevels.put(SoundCategory.AMBIENT, 1.0f);
 		soundLevels.put(SoundCategory.VOICE, 1.0f);
+	}
+
+	public SoundProfile(String name_) {
+		name = name_;
+
+		soundLevels = new HashMap<SoundCategory, Float>();
+		soundLevels.put(SoundCategory.MASTER, 1.0f);
+		soundLevels.put(SoundCategory.MUSIC, 1.0f);
+		soundLevels.put(SoundCategory.RECORDS, 1.0f);
+		soundLevels.put(SoundCategory.WEATHER, 1.0f);
+		soundLevels.put(SoundCategory.BLOCKS, 1.0f);
+		soundLevels.put(SoundCategory.HOSTILE, 1.0f);
+		soundLevels.put(SoundCategory.NEUTRAL, 1.0f);
+		soundLevels.put(SoundCategory.PLAYERS, 1.0f);
+		soundLevels.put(SoundCategory.AMBIENT, 1.0f);
+		soundLevels.put(SoundCategory.VOICE, 1.0f);
+	}
+
+	public String getName() {
+		return name;
 	}
 
 	public void saveCurrentSettings() {
