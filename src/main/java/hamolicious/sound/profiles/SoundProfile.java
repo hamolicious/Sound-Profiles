@@ -11,7 +11,7 @@ import net.minecraft.sound.SoundCategory;
 public class SoundProfile {
 	private HashMap<SoundCategory, Float> soundLevels;
 
-	SoundProfile() {
+	public SoundProfile() {
 		soundLevels = new HashMap<SoundCategory, Float>();
 		soundLevels.put(SoundCategory.MASTER, 1.0f);
 		soundLevels.put(SoundCategory.MUSIC, 1.0f);
