@@ -3,5 +3,6 @@
 	"key.open.settings.hamolicious.sound.profiles": "Open Sound Profiles Settings",
 	"button.save.state.hamolicious.sound.profiles" : "Save Current State",
 	"button.load.state.hamolicious.sound.profiles" : "Load Profile",
-	"text.input.hint.hamolicious.sound.profiles.name" : "Profile Name"
+	"text.input.hint.hamolicious.sound.profiles.name" : "Profile Name",
+	"button.delete.state.hamolicious.sound.profiles" : "X"
 }

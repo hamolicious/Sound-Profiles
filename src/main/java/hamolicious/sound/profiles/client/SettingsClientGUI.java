@@ -15,7 +15,7 @@ import net.minecraft.client.util.Window;
 import net.minecraft.text.TranslatableText;
 
 public class SettingsClientGUI extends LightweightGuiDescription {
-	private static final float ROOT_PANEL_WIDTH_MULTIPLIER = 0.5f;
+	private static final float ROOT_PANEL_WIDTH_MULTIPLIER = 0.6f;
 	private static final float ROOT_PANEL_HEIGHT_MULTIPLIER = 0.5f;
 
 	private void setupButtons(WPlainPanel root, WTextField profileName, int width, int height) {
@@ -70,13 +70,20 @@ public class SettingsClientGUI extends LightweightGuiDescription {
 		WPlainPanel plainPanel = new WPlainPanel();
 		for (int i = 0; i < SoundProfiles.profiles.size(); i++) {
 			SoundProfile soundProfile = SoundProfiles.profiles.get(i);
-			WButton button = new WButton(new TranslatableText("button.load.state.hamolicious.sound.profiles"));
-			button.setOnClick(() -> {
+			WButton loadButton = new WButton(new TranslatableText("button.load.state.hamolicious.sound.profiles"));
+			loadButton.setOnClick(() -> {
 				soundProfile.applyProfile();
 			});
 
+			WButton deleteButton = new WButton(new TranslatableText("button.delete.state.hamolicious.sound.profiles"));
+			deleteButton.setOnClick(() -> {
+				SoundProfiles.profiles.remove(soundProfile);
+			});
+
+			plainPanel.add(loadButton, WIDTH/2, i * 45, WIDTH / 3, 40);
+			plainPanel.add(deleteButton, WIDTH - WIDTH / 10, i * 45, WIDTH / 10, 40);
+
 			label = new WLabel(soundProfile.getName());
-			plainPanel.add(button, WIDTH / 2, i * 45, WIDTH / 2, 40);
 			plainPanel.add(label, 0, i * 45, WIDTH / 2, 40);
 		}
 
