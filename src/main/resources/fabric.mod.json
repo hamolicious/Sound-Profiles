@@ -1,29 +1,29 @@
 {
   "schemaVersion": 1,
-  "id": "modid",
+  "id": "soundprofiles",
   "version": "${version}",
 
-  "name": "Example Mod",
-  "description": "This is an example description! Tell everyone what your mod is about!",
+  "name": "Sound Profiles",
+  "description": "Allows the creation of sound profiles activated manually or based on location",
   "authors": [
-    "Me!"
+    "hamolicious"
   ],
   "contact": {
-    "homepage": "https://fabricmc.net/",
+    "homepage": "https://github.com/hamolicious/Sound-Profiles",
     "sources": "https://github.com/FabricMC/fabric-example-mod"
   },
 
-  "license": "CC0-1.0",
-  "icon": "assets/modid/icon.png",
+  "license": "WTFPL",
+  "icon": "assets/soundprofiles/icon.png",
 
   "environment": "*",
   "entrypoints": {
     "main": [
-      "net.fabricmc.example.ExampleMod"
+      "hamolicious.sound.profiles.SoundProfiles"
     ]
   },
   "mixins": [
-    "modid.mixins.json"
+    "soundprofiles.mixins.json"
   ],
 
   "depends": {
