@@ -9,9 +9,10 @@ import net.minecraft.sound.SoundCategory;
 
 
 public class SoundProfile {
+	public static int currentProfileIndex = 0;
+
 	private HashMap<SoundCategory, Float> soundLevels;
 	private String name;
-	public static int currentProfileIndex = 0;
 
 	public SoundProfile() {
 		currentProfileIndex++;

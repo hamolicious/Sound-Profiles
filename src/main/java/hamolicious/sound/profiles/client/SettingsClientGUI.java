@@ -7,6 +7,7 @@ import io.github.cottonmc.cotton.gui.widget.WButton;
 import io.github.cottonmc.cotton.gui.widget.WLabel;
 import io.github.cottonmc.cotton.gui.widget.WPlainPanel;
 import io.github.cottonmc.cotton.gui.widget.WScrollPanel;
+import io.github.cottonmc.cotton.gui.widget.WTextField;
 import io.github.cottonmc.cotton.gui.widget.data.Insets;
 import net.fabricmc.fabric.api.util.TriState;
 import net.minecraft.client.MinecraftClient;
@@ -17,14 +18,22 @@ public class SettingsClientGUI extends LightweightGuiDescription {
 	private static final float ROOT_PANEL_WIDTH_MULTIPLIER = 0.5f;
 	private static final float ROOT_PANEL_HEIGHT_MULTIPLIER = 0.5f;
 
-	private void setupButtons(WPlainPanel root, int width, int height) {
+	private void setupButtons(WPlainPanel root, WTextField profileName, int width, int height) {
 		WButton[] buttons = new WButton[1];
 
 		// Save State Button
 		WButton buttonSaveCurrentState = new WButton(
 				new TranslatableText("button.save.state.hamolicious.sound.profiles"));
 		buttonSaveCurrentState.setOnClick(() -> {
-			SoundProfile soundProfile = new SoundProfile();
+			SoundProfile soundProfile;
+			String cmp = new TranslatableText("text.input.hint.hamolicious.sound.profiles.name").getString();
+
+			if (profileName.getText().equals(cmp)) {
+				soundProfile = new SoundProfile();
+			} else {
+				soundProfile = new SoundProfile(profileName.getText());
+			}
+
 			soundProfile.saveCurrentSettings();
 			SoundProfiles.profiles.add(soundProfile);
 		});
@@ -50,7 +59,12 @@ public class SettingsClientGUI extends LightweightGuiDescription {
 		WLabel label = new WLabel(new TranslatableText("category.hamolicious.sound.profiles"));
 		root.add(label, 0, 0);
 
-		setupButtons(root, WIDTH, HEIGHT);
+		// Add text input
+		WTextField inputFieldProfileName = new WTextField();
+		inputFieldProfileName.setText(new TranslatableText("text.input.hint.hamolicious.sound.profiles.name").getString());
+		root.add(inputFieldProfileName, 0, 45, WIDTH, 40);
+
+		setupButtons(root, inputFieldProfileName, WIDTH, HEIGHT);
 
 		// Create Sound Profiles Panel
 		WPlainPanel plainPanel = new WPlainPanel();
@@ -71,7 +85,7 @@ public class SettingsClientGUI extends LightweightGuiDescription {
 		scrollPanel.setScrollingHorizontally(TriState.FALSE);
 		scrollPanel.setScrollingVertically(TriState.DEFAULT);
 
-		root.add(scrollPanel, 0, 80, WIDTH, 240 - 80);
+		root.add(scrollPanel, 0, 90, WIDTH, 240 - 80);
 		root.validate(this);
 	}
 }
