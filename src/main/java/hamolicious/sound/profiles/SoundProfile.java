@@ -36,8 +36,11 @@ public class SoundProfile {
 	}
 
 	public boolean isActive() {
-		//TODO: if compareSounds returns false, setActive to false
-		return isSet && compareSounds();
+		boolean r = compareSounds();
+		if (!r) {
+			isSet = false;
+		}
+		return isSet && r;
 	}
 
 	private boolean compareSounds() {
