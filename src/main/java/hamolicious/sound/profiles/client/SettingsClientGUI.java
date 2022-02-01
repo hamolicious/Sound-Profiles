@@ -11,6 +11,8 @@ import io.github.cottonmc.cotton.gui.widget.WTextField;
 import io.github.cottonmc.cotton.gui.widget.data.Insets;
 import net.fabricmc.fabric.api.util.TriState;
 import net.minecraft.client.MinecraftClient;
+import net.minecraft.client.gui.screen.Screen;
+import net.minecraft.client.render.GameRenderer;
 import net.minecraft.client.util.Window;
 import net.minecraft.text.TranslatableText;
 
@@ -36,6 +38,7 @@ public class SettingsClientGUI extends LightweightGuiDescription {
 
 			soundProfile.saveCurrentSettings();
 			SoundProfiles.profiles.add(soundProfile);
+			refreshScreen();
 		});
 		buttons[0] = buttonSaveCurrentState;
 
@@ -44,6 +47,11 @@ public class SettingsClientGUI extends LightweightGuiDescription {
 			int x = i * w;
 			root.add(buttons[i], x, 20, w, 40);
 		}
+	}
+
+	private void refreshScreen() {
+		// dirty solution TODO: find a better way to refresh the screen
+		MinecraftClient.getInstance().setScreen(new SettingsClientScreen(new SettingsClientGUI()));
 	}
 
 	public SettingsClientGUI() {
@@ -74,11 +82,13 @@ public class SettingsClientGUI extends LightweightGuiDescription {
 			loadButton.setOnClick(() -> {
 				soundProfile.applyProfile();
 				soundProfile.setActive();
+				refreshScreen();
 			});
 
 			WButton deleteButton = new WButton(new TranslatableText("button.delete.state.hamolicious.sound.profiles"));
 			deleteButton.setOnClick(() -> {
 				SoundProfiles.profiles.remove(soundProfile);
+				refreshScreen();
 			});
 
 			plainPanel.add(loadButton, WIDTH/2, i * 45, WIDTH / 3, 40);
