@@ -1,0 +1,8 @@
+{
+	"menu.category.soundprofiles": "Звуковые профили",
+	"menu.key.open.settings.soundprofiles": "Открыть настройки звуковых профилей",
+	"menu.button.save.state.soundprofiles": "Сохранить настройки",
+	"menu.button.load.state.soundprofiles": "Использовать профиль",
+	"menu.button.delete.state.soundprofiles": "X",
+	"menu.input.hint.soundprofiles": "Имя профиля"
+}
