@@ -30,7 +30,7 @@ public class SoundProfiles implements ModInitializer {
 			SoundProfile profile = SoundProfiles.profiles.get(i);
 			NbtCompound profileNbt = new NbtCompound();
 			profile.writeToNbt(profileNbt);
-			profilesNbt.put(profile.getName(), profileNbt);
+			profilesNbt.put(Integer.toString(i), profileNbt);
 		}
 
 		nbt.put("SoundProfiles", profilesNbt);

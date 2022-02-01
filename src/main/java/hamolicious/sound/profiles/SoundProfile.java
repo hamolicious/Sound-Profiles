@@ -61,6 +61,7 @@ public class SoundProfile {
 	}
 
 	public void writeToNbt(NbtCompound list) {
+		list.putString("name", getName());
 		list.putFloat(SoundCategory.MASTER.getName(), soundLevels.get(SoundCategory.MASTER));
 		list.putFloat(SoundCategory.MUSIC.getName(), soundLevels.get(SoundCategory.MUSIC));
 		list.putFloat(SoundCategory.RECORDS.getName(), soundLevels.get(SoundCategory.RECORDS));
