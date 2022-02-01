@@ -5,7 +5,6 @@ import java.util.HashMap;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.option.GameOptions;
 import net.minecraft.nbt.NbtCompound;
-import net.minecraft.nbt.NbtFloat;
 import net.minecraft.sound.SoundCategory;
 
 
