@@ -10,6 +10,6 @@ Ever get tired of changing your sound settings? Go to your xp farm and now you w
 ## TODO
 - [X] Add Profile Saving
 - [ ] Add automatic profile loading based on location
-- [ ] Update GUI after changes
+- [X] Update GUI after changes
 - [ ] Add tooltip previews for profiles
 
