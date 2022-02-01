@@ -14,6 +14,7 @@ public class SoundProfile {
 
 	private HashMap<SoundCategory, Float> soundLevels;
 	private String name;
+	private boolean isSet = false;
 
 	public SoundProfile() {
 		currentProfileIndex++;
@@ -28,6 +29,37 @@ public class SoundProfile {
 
 		soundLevels = new HashMap<SoundCategory, Float>();
 		setDefaultLevels();
+	}
+
+	public void setActive() {
+		isSet = true;
+	}
+
+	public boolean isActive() {
+		return isSet && compareSounds();
+	}
+
+	private boolean compareSounds() {
+		MinecraftClient client = MinecraftClient.getInstance();
+		boolean theSame = true;
+		try { // incase something goes wrong...
+			GameOptions options = client.options;
+			if (Float.compare(options.getSoundVolume(SoundCategory.MASTER), soundLevels.get(SoundCategory.MASTER)) != 0) {theSame = false;};
+			if (Float.compare(options.getSoundVolume(SoundCategory.MUSIC), soundLevels.get(SoundCategory.MUSIC)) != 0) {theSame = false;};
+			if (Float.compare(options.getSoundVolume(SoundCategory.RECORDS), soundLevels.get(SoundCategory.RECORDS)) != 0) {theSame = false;};
+			if (Float.compare(options.getSoundVolume(SoundCategory.WEATHER), soundLevels.get(SoundCategory.WEATHER)) != 0) {theSame = false;};
+			if (Float.compare(options.getSoundVolume(SoundCategory.BLOCKS), soundLevels.get(SoundCategory.BLOCKS)) != 0) {theSame = false;};
+			if (Float.compare(options.getSoundVolume(SoundCategory.HOSTILE), soundLevels.get(SoundCategory.HOSTILE)) != 0) {theSame = false;};
+			if (Float.compare(options.getSoundVolume(SoundCategory.NEUTRAL), soundLevels.get(SoundCategory.NEUTRAL)) != 0) {theSame = false;};
+			if (Float.compare(options.getSoundVolume(SoundCategory.PLAYERS), soundLevels.get(SoundCategory.PLAYERS)) != 0) {theSame = false;};
+			if (Float.compare(options.getSoundVolume(SoundCategory.AMBIENT), soundLevels.get(SoundCategory.AMBIENT)) != 0) {theSame = false;};
+			if (Float.compare(options.getSoundVolume(SoundCategory.VOICE), soundLevels.get(SoundCategory.VOICE)) != 0) {theSame = false;};
+		} catch (Exception e) { // ...wanna get rid of the client
+			client.close();
+			e.printStackTrace();
+			theSame = false;
+		}
+		return theSame;
 	}
 
 	private void setDefaultLevels() {

@@ -73,6 +73,7 @@ public class SettingsClientGUI extends LightweightGuiDescription {
 			WButton loadButton = new WButton(new TranslatableText("button.load.state.hamolicious.sound.profiles"));
 			loadButton.setOnClick(() -> {
 				soundProfile.applyProfile();
+				soundProfile.setActive();
 			});
 
 			WButton deleteButton = new WButton(new TranslatableText("button.delete.state.hamolicious.sound.profiles"));
@@ -84,6 +85,7 @@ public class SettingsClientGUI extends LightweightGuiDescription {
 			plainPanel.add(deleteButton, WIDTH - WIDTH / 10, i * 45, WIDTH / 10, 40);
 
 			label = new WLabel(soundProfile.getName());
+			label.setColor((soundProfile.isActive() ? 0x00C000 : WLabel.DEFAULT_TEXT_COLOR));
 			plainPanel.add(label, 0, i * 45, WIDTH / 2, 40);
 		}
 
