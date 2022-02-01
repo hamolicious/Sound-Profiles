@@ -1,8 +1,8 @@
 {
-	"category.hamolicious.sound.profiles": "Sound Profiles",
-	"key.open.settings.hamolicious.sound.profiles": "Open Sound Profiles Settings",
-	"button.save.state.hamolicious.sound.profiles" : "Save Current State",
-	"button.load.state.hamolicious.sound.profiles" : "Load Profile",
-	"text.input.hint.hamolicious.sound.profiles.name" : "Profile Name",
-	"button.delete.state.hamolicious.sound.profiles" : "X"
+	"menu.category.soundprofiles": "Sound Profiles",
+	"menu.key.open.settings.soundprofiles": "Open Sound Profiles Settings",
+	"menu.button.save.state.soundprofiles" : "Save Current State",
+	"menu.button.load.state.soundprofiles" : "Load Profile",
+	"menu.button.delete.state.soundprofiles" : "X",
+	"menu.input.hint.soundprofiles" : "Profile Name"
 }

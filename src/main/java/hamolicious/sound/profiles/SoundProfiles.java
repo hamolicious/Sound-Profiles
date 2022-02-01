@@ -48,10 +48,10 @@ public class SoundProfiles implements ModInitializer {
 
 	private void initializeKeyBinding() {
 		keyBindOpenSettings = KeyBindingHelper.registerKeyBinding(new KeyBinding(
-				"key.open.settings.hamolicious.sound.profiles", // The translation key of the keybinding's name
+				"menu.key.open.settings.soundprofiles", // The translation key of the keybinding's name
 				InputUtil.Type.KEYSYM, // The type of the keybinding, KEYSYM for keyboard, MOUSE for mouse.
 				GLFW.GLFW_KEY_R, // The keycode of the key
-				"category.hamolicious.sound.profiles" // The translation key of the keybinding's category.
+				"menu.category.soundprofiles" // The translation key of the keybinding's category.
 		));
 	}
 

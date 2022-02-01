@@ -25,10 +25,10 @@ public class SettingsClientGUI extends LightweightGuiDescription {
 
 		// Save State Button
 		WButton buttonSaveCurrentState = new WButton(
-				new TranslatableText("button.save.state.hamolicious.sound.profiles"));
+				new TranslatableText("menu.button.save.state.soundprofiles"));
 		buttonSaveCurrentState.setOnClick(() -> {
 			SoundProfile soundProfile;
-			String cmp = new TranslatableText("text.input.hint.hamolicious.sound.profiles.name").getString();
+			String cmp = new TranslatableText("menu.input.hint.soundprofiles").getString();
 
 			if (profileName.getText().equals(cmp)) {
 				soundProfile = new SoundProfile();
@@ -64,12 +64,12 @@ public class SettingsClientGUI extends LightweightGuiDescription {
 		root.setInsets(Insets.ROOT_PANEL);
 
 		// Title
-		WLabel label = new WLabel(new TranslatableText("category.hamolicious.sound.profiles"));
+		WLabel label = new WLabel(new TranslatableText("menu.category.soundprofiles"));
 		root.add(label, 0, 0);
 
 		// Add text input
 		WTextField inputFieldProfileName = new WTextField();
-		inputFieldProfileName.setText(new TranslatableText("text.input.hint.hamolicious.sound.profiles.name").getString());
+		inputFieldProfileName.setText(new TranslatableText("menu.input.hint.soundprofiles").getString());
 		root.add(inputFieldProfileName, 0, 45, WIDTH, 40);
 
 		setupButtons(root, inputFieldProfileName, WIDTH, HEIGHT);
@@ -78,14 +78,14 @@ public class SettingsClientGUI extends LightweightGuiDescription {
 		WPlainPanel plainPanel = new WPlainPanel();
 		for (int i = 0; i < SoundProfiles.profiles.size(); i++) {
 			SoundProfile soundProfile = SoundProfiles.profiles.get(i);
-			WButton loadButton = new WButton(new TranslatableText("button.load.state.hamolicious.sound.profiles"));
+			WButton loadButton = new WButton(new TranslatableText("menu.button.load.state.soundprofiles"));
 			loadButton.setOnClick(() -> {
 				soundProfile.applyProfile();
 				soundProfile.setActive();
 				refreshScreen();
 			});
 
-			WButton deleteButton = new WButton(new TranslatableText("button.delete.state.hamolicious.sound.profiles"));
+			WButton deleteButton = new WButton(new TranslatableText("menu.button.delete.state.soundprofiles"));
 			deleteButton.setOnClick(() -> {
 				SoundProfiles.profiles.remove(soundProfile);
 				refreshScreen();
