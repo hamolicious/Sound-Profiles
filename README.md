@@ -8,7 +8,7 @@ Ever get tired of changing your sound settings? Go to your xp farm and now you w
 1. Drag and drop the mod into the `mods/` folder inside your Minecraft installation
 
 ## TODO
-- [ ] Add Profile Saving
+- [X] Add Profile Saving [IN TESTING]
 - [ ] Add automatic profile loading based on location
 - [ ] Update GUI after changes
 - [ ] Add tooltip previews for profiles
