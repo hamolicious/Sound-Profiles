@@ -4,6 +4,7 @@ import java.util.HashMap;
 
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.option.GameOptions;
+import net.minecraft.nbt.NbtCompound;
 import net.minecraft.sound.SoundCategory;
 
 
@@ -45,6 +46,31 @@ public class SoundProfile {
 		soundLevels.put(SoundCategory.PLAYERS, 1.0f);
 		soundLevels.put(SoundCategory.AMBIENT, 1.0f);
 		soundLevels.put(SoundCategory.VOICE, 1.0f);
+	}
+
+	public static SoundProfile readFromNbt(NbtCompound nbt) {
+		SoundProfile profile = new SoundProfile();
+		profile.name = nbt.getString("name");
+
+		NbtCompound soundLevels = nbt.getCompound("soundLevels");
+		for (String key : soundLevels.getKeys()) {
+			profile.soundLevels.put(SoundCategory.valueOf(key), soundLevels.getFloat(key));
+		}
+
+		return profile;
+	}
+
+	public void writeToNbt(NbtCompound list) {
+		list.putFloat(SoundCategory.MASTER.getName(), soundLevels.get(SoundCategory.MASTER));
+		list.putFloat(SoundCategory.MUSIC.getName(), soundLevels.get(SoundCategory.MUSIC));
+		list.putFloat(SoundCategory.RECORDS.getName(), soundLevels.get(SoundCategory.RECORDS));
+		list.putFloat(SoundCategory.WEATHER.getName(), soundLevels.get(SoundCategory.WEATHER));
+		list.putFloat(SoundCategory.BLOCKS.getName(), soundLevels.get(SoundCategory.BLOCKS));
+		list.putFloat(SoundCategory.HOSTILE.getName(), soundLevels.get(SoundCategory.HOSTILE));
+		list.putFloat(SoundCategory.NEUTRAL.getName(), soundLevels.get(SoundCategory.NEUTRAL));
+		list.putFloat(SoundCategory.PLAYERS.getName(), soundLevels.get(SoundCategory.PLAYERS));
+		list.putFloat(SoundCategory.AMBIENT.getName(), soundLevels.get(SoundCategory.AMBIENT));
+		list.putFloat(SoundCategory.VOICE.getName(), soundLevels.get(SoundCategory.VOICE));
 	}
 
 	public String getName() {
